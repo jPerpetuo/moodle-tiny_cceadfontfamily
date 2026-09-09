@@ -16,7 +16,7 @@ The plugin declares Moodle 5.1 and 5.2 support and requires the Moodle 5.2 API l
 
 The plugin applies TinyMCE's `fontname` formatter to the current selection. TinyMCE handles partial selections, selections crossing inline elements, undo/redo, and preservation of unrelated inline styles such as font size and colour. The selected family must be present in the configured list. The plugin does not install fonts or guarantee that a selected font exists on the user's device.
 
-The automated tests cover capability checks, configuration normalisation, the formatter contract, and a Behat flow for style preservation and persistence. Full browser homologation should also cover applying font size before and after font family in the target institution's Moodle installation.
+The automated tests cover capability checks, configuration normalisation, the formatter contract, and Behat flows for style preservation and persistence. The CI workflow also installs the private companion `tiny_cceadfontsize` plugin when the repository secret `CCEADFONTSIZE_READ_TOKEN` is configured with read-only access to that repository. Full browser homologation should also cover applying font size before and after font family in the target institution's Moodle installation.
 
 The joint homologation scenarios are:
 

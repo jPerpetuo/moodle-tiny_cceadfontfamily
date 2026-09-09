@@ -24,6 +24,36 @@ Feature: Tiny CCEAD font family
     Then the field "Description" matches expression "@font-family:\s*Arial@"
 
   @javascript
+  Scenario: Apply font size then family and preserve both after save and reopen
+    When I select the "p" element in position "0" of the "Description" TinyMCE editor
+    And I click on the "Format > Font size" menu item for the "Description" TinyMCE editor
+    And I click on "14 pt" "menuitem"
+    And I select the "p" element in position "0" of the "Description" TinyMCE editor
+    And I click on the "Format > Font family" menu item for the "Description" TinyMCE editor
+    And I click on "Arial" "menuitem"
+    Then the field "Description" matches expression "@font-size:\s*14pt@"
+    And the field "Description" matches expression "@font-family:\s*Arial@"
+    And I click on "Update profile" "button"
+    And I open my profile in edit mode
+    Then the field "Description" matches expression "@font-size:\s*14pt@"
+    And the field "Description" matches expression "@font-family:\s*Arial@"
+
+  @javascript
+  Scenario: Apply family then font size and preserve both after save and reopen
+    When I select the "p" element in position "0" of the "Description" TinyMCE editor
+    And I click on the "Format > Font family" menu item for the "Description" TinyMCE editor
+    And I click on "Arial" "menuitem"
+    And I select the "p" element in position "0" of the "Description" TinyMCE editor
+    And I click on the "Format > Font size" menu item for the "Description" TinyMCE editor
+    And I click on "14 pt" "menuitem"
+    Then the field "Description" matches expression "@font-family:\s*Arial@"
+    And the field "Description" matches expression "@font-size:\s*14pt@"
+    And I click on "Update profile" "button"
+    And I open my profile in edit mode
+    Then the field "Description" matches expression "@font-family:\s*Arial@"
+    And the field "Description" matches expression "@font-size:\s*14pt@"
+
+  @javascript
   Scenario: A user without the capability cannot use the control
     Given the following "courses" exist:
       | fullname | shortname | format |
