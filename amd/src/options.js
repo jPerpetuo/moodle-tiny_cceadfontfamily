@@ -15,7 +15,7 @@ const fonts = getPluginOptionName(pluginName, 'fonts');
 
 export const register = (editor) => editor.options.register(fonts, {
     processor: 'Array',
-    default: [],
+    "default": [],
 });
 
 export const getFontList = (editor) => {
