@@ -1,0 +1,27 @@
+<?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+
+/**
+ * English strings for Tiny CCEAD font family.
+ *
+ * @package     tiny_cceadfontfamily
+ * @category    string
+ * @copyright   2026 CCEAD
+ * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+defined('MOODLE_INTERNAL') || die();
+
+$string['button_fontfamily'] = 'Font family';
+$string['cceadfontfamily:use'] = 'Use the CCEAD font family plugin';
+$string['fonts'] = 'Font families';
+$string['fonts_desc'] = 'One font family per line. Empty lines and duplicate entries are ignored.';
+$string['menuitem_fontfamily'] = 'Font family';
+$string['pluginname'] = 'CCEAD font family';
+$string['privacy:metadata'] = 'The CCEAD font family plugin does not store any personal data.';
+$string['settings'] = 'Settings';
