@@ -16,12 +16,12 @@ Feature: Tiny CCEAD font family
     When I select the "p" element in position "0" of the "Description" TinyMCE editor
     And I click on the "Format > Font family" menu item for the "Description" TinyMCE editor
     And I click on the "Arial" menu item for the "Description" TinyMCE editor
-    Then the field "Description" should contain "font-family: Arial"
-    And the field "Description" should contain "color: red"
-    And the field "Description" should contain "font-size: 14pt"
+    Then the field "Description" matches expression "@font-family:\s*Arial@"
+    And the field "Description" matches expression "@color:\s*red@"
+    And the field "Description" matches expression "@font-size:\s*14pt@"
     And I click on "Update profile" "button"
     And I open my profile in edit mode
-    Then the field "Description" should contain "font-family: Arial"
+    Then the field "Description" matches expression "@font-family:\s*Arial@"
 
   @javascript
   Scenario: A user without the capability cannot use the control
