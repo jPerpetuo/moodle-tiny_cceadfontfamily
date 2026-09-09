@@ -10,6 +10,8 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-24.04
+    env:
+      CCEADFONTSIZE_READ_TOKEN: ${{ secrets.CCEADFONTSIZE_READ_TOKEN }}
     services:
       postgres:
         image: ${{ matrix.database == 'pgsql' && 'postgres:16' || '' }}
@@ -59,11 +61,11 @@ jobs:
           path: plugin
           persist-credentials: false
       - name: Check out companion font size plugin
-        if: ${{ secrets.CCEADFONTSIZE_READ_TOKEN != '' }}
+        if: ${{ env.CCEADFONTSIZE_READ_TOKEN != '' }}
         uses: actions/checkout@v6
         with:
           repository: jPerpetuo/moodle-tiny-cceadfontsize
-          token: ${{ secrets.CCEADFONTSIZE_READ_TOKEN }}
+          token: ${{ env.CCEADFONTSIZE_READ_TOKEN }}
           path: extra-plugins/tiny_cceadfontsize
           persist-credentials: false
       - name: Set up PHP ${{ matrix.php }}
