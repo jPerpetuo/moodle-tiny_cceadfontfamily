@@ -65,4 +65,28 @@ class behat_tiny_cceadfontfamily extends behat_base {
             instance.selection.setRng(range);
             JS);
     }
+
+    /**
+     * Undo the most recent TinyMCE editing operation.
+     *
+     * @When I undo the last change in the "Description" TinyMCE editor
+     */
+    public function undo_last_change(): void {
+        $this->require_tiny_tags();
+        $editor = $this->get_textarea_for_locator('Description');
+        $editorid = $editor->getAttribute('id');
+        $this->execute_javascript_for_editor($editorid, 'instance.undoManager.undo();');
+    }
+
+    /**
+     * Redo the most recently undone TinyMCE editing operation.
+     *
+     * @When I redo the last change in the "Description" TinyMCE editor
+     */
+    public function redo_last_change(): void {
+        $this->require_tiny_tags();
+        $editor = $this->get_textarea_for_locator('Description');
+        $editorid = $editor->getAttribute('id');
+        $this->execute_javascript_for_editor($editorid, 'instance.undoManager.redo();');
+    }
 }

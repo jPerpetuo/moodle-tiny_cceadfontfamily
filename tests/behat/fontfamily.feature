@@ -74,9 +74,9 @@ Feature: Tiny CCEAD font family
     And I click on the "Format > Font family" menu item for the "Description" TinyMCE editor
     And I click on "Arial" "menuitem"
     Then the field "Description" matches expression "@font-family:\s*Arial@"
-    And I press the key "CTRL+Z"
+    And I undo the last change in the "Description" TinyMCE editor
     Then the field "Description" does not match expression "@font-family:\s*Arial@"
-    And I press the key "CTRL+Y"
+    And I redo the last change in the "Description" TinyMCE editor
     Then the field "Description" matches expression "@font-family:\s*Arial@"
     And the field "Description" matches expression "@color:\s*red@"
     And the field "Description" matches expression "@font-size:\s*14pt@"
