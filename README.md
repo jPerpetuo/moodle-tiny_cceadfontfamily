@@ -10,7 +10,7 @@ The administrator setting accepts one family per line. Unix, Windows, and old Ma
 
 ## Compatibility
 
-The plugin declares Moodle 5.1 and 5.2 support and requires the Moodle 5.2 API level used by the companion CCEAD font size plugin. The CI workflow covers PHP 8.2, 8.3, and 8.4 with PostgreSQL and MariaDB. These are declared CI combinations; local execution requires a configured Moodle development installation.
+The plugin declares Moodle 5.1 and 5.2 support and requires Moodle API level `2025092600`. The CI workflow tests Moodle 5.1 with PHP 8.2 and 8.4, Moodle 5.2 with PHP 8.3 and 8.4, PostgreSQL 16, and MariaDB 11. These are the combinations declared in the workflow. Local execution requires a configured Moodle development installation.
 
 ## Behaviour and limitations
 
@@ -28,7 +28,13 @@ These scenarios require `tiny_cceadfontsize` and `tiny_cceadfontfamily` installe
 
 ## Development checks
 
-The workflow uses Moodle Plugin CI for PHP lint, PHPCS, PHPDoc, validation, savepoint checks, Grunt, PHPUnit, and Behat. AMD build artifacts must be generated with Moodle's standard Grunt workflow before packaging a source checkout.
+The workflow uses Moodle Plugin CI for PHP lint, PHPMD, PHPCS, PHPDoc, validation, savepoint checks, Grunt, PHPUnit, and Behat. AMD build artifacts must be generated with Moodle's standard Grunt workflow before packaging a source checkout.
+
+## Distribution
+
+The distributable archive must contain this plugin in a single top-level directory named `cceadfontfamily`. Include the generated files under `amd/build`, and exclude the repository metadata, local logs, temporary files, and development environment files. Install the archive at `<moodleroot>/lib/editor/tiny/plugins/cceadfontfamily`.
+
+The repository is maintained privately. A version tag and a GitHub release may be used for institutional distribution without publishing the plugin to the Moodle Plugins directory.
 
 ## License
 
