@@ -7,7 +7,7 @@ Feature: Tiny CCEAD font family
   Background:
     Given I log in as "admin"
     And the following config values are set as admin:
-      | fonts | Arial\nGeorgia\n | tiny_cceadfontfamily |
+      | fonts | Arial | tiny_cceadfontfamily |
     And I open my profile in edit mode
     And I set the field "Description" to "<p><span style='color: red; font-size: 14pt'>First text</span> and <strong>second text</strong></p>"
 
@@ -15,7 +15,7 @@ Feature: Tiny CCEAD font family
   Scenario: Apply a family to a selection and preserve existing styles after save and reopen
     When I select the "p" element in position "0" of the "Description" TinyMCE editor
     And I click on the "Format > Font family" menu item for the "Description" TinyMCE editor
-    And I click on the "Arial" menu item for the "Description" TinyMCE editor
+    And I click on "Arial" "menuitem"
     Then the field "Description" matches expression "@font-family:\s*Arial@"
     And the field "Description" matches expression "@color:\s*red@"
     And the field "Description" matches expression "@font-size:\s*14pt@"
@@ -25,12 +25,25 @@ Feature: Tiny CCEAD font family
 
   @javascript
   Scenario: A user without the capability cannot use the control
+    Given the following "courses" exist:
+      | fullname | shortname | format |
+      | Course 1 | C1        | topics |
+    And the following "roles" exist:
+      | name           | shortname | description         | archetype      |
+      | Limited editor | limited    | Limited permissions | editingteacher |
     Given the following "users" exist:
       | username | firstname | lastname | email |
       | limited  | Limited   | User    | limited@example.com |
+    And the following "course enrolments" exist:
+      | user    | course | role    |
+      | limited | C1     | limited |
+    And the following "activities" exist:
+      | activity | name      | intro     | introformat | course | content     | contentformat | idnumber |
+      | page     | PageName1 | PageDesc1 | 1           | C1     | PageContent | 1             | 1        |
     And the following "permission overrides" exist:
       | capability                 | permission | role  | contextlevel | reference |
-      | tiny/cceadfontfamily:use   | Prohibit   | user  | System       |           |
+      | tiny/cceadfontfamily:use   | Prohibit   | limited | Course       | C1        |
     When I log in as "limited"
-    And I open my profile in edit mode
+    And I am on the "PageName1" "page activity" page
+    And I navigate to "Settings" in current page administration
     Then "Font family" button should not exist in the "Description" TinyMCE editor
