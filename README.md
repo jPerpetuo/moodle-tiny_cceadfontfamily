@@ -34,7 +34,7 @@ The workflow uses Moodle Plugin CI for PHP lint, PHPMD, PHPCS, PHPDoc, validatio
 
 The distributable archive must contain this plugin in a single top-level directory named `cceadfontfamily`. Include the generated files under `amd/build`, and exclude the repository metadata, local logs, temporary files, and development environment files. Install the archive at `<moodleroot>/lib/editor/tiny/plugins/cceadfontfamily`.
 
-The repository is maintained privately. A version tag and a GitHub release may be used for institutional distribution without publishing the plugin to the Moodle Marketplace.
+The public source repository is [jPerpetuo/moodle-tiny_cceadfontfamily](https://github.com/jPerpetuo/moodle-tiny_cceadfontfamily). Use the [GitHub issue tracker](https://github.com/jPerpetuo/moodle-tiny_cceadfontfamily/issues) for reproducible bug reports and feature requests. The plugin is distributed under the GNU GPL v3 or later and is not currently listed in the Moodle Marketplace.
 
 ## License
 
