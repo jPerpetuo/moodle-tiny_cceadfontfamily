@@ -1,4 +1,4 @@
-@editor @editor_tiny @tiny_cceadfontfamily @javascript
+@editor @editor_tiny @tiny @tiny_cceadfontfamily @javascript
 Feature: Tiny CCEAD font family
   In order to format content consistently
   As a user with the CCEAD font family capability
